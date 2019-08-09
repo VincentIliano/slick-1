@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.202
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slick.Models", "Slick.Models\Slick.Models.csproj", "{9489EACD-886B-4631-9E5F-71ED8A1410E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slick.Database", "Slick.Database\Slick.Database.csproj", "{CF6F4C28-3F23-43DD-86EB-FEB7764B083A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slick.Api", "Slick.Api\Slick.Api.csproj", "{230B5015-0CF2-49BE-9B68-524DEA855742}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slick.Repositories", "Slick.Repositories\Slick.Repositories.csproj", "{DA5B0E8E-9536-403C-982B-346C68A30800}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slick.Services", "Slick.Services\Slick.Services.csproj", "{9582AEA1-EEB6-4BA0-8DE9-BF1781E37BE9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9489EACD-886B-4631-9E5F-71ED8A1410E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9489EACD-886B-4631-9E5F-71ED8A1410E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9489EACD-886B-4631-9E5F-71ED8A1410E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9489EACD-886B-4631-9E5F-71ED8A1410E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF6F4C28-3F23-43DD-86EB-FEB7764B083A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF6F4C28-3F23-43DD-86EB-FEB7764B083A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF6F4C28-3F23-43DD-86EB-FEB7764B083A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF6F4C28-3F23-43DD-86EB-FEB7764B083A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{230B5015-0CF2-49BE-9B68-524DEA855742}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{230B5015-0CF2-49BE-9B68-524DEA855742}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{230B5015-0CF2-49BE-9B68-524DEA855742}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{230B5015-0CF2-49BE-9B68-524DEA855742}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA5B0E8E-9536-403C-982B-346C68A30800}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA5B0E8E-9536-403C-982B-346C68A30800}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA5B0E8E-9536-403C-982B-346C68A30800}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA5B0E8E-9536-403C-982B-346C68A30800}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9582AEA1-EEB6-4BA0-8DE9-BF1781E37BE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9582AEA1-EEB6-4BA0-8DE9-BF1781E37BE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9582AEA1-EEB6-4BA0-8DE9-BF1781E37BE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9582AEA1-EEB6-4BA0-8DE9-BF1781E37BE9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5811909D-DD24-4F67-92B7-28F9694159E8}
+	EndGlobalSection
+EndGlobal
