@@ -30,7 +30,7 @@ namespace Slick.Services.People
 
         public IEnumerable<Consultant> GetAll()
         {
-            return this.consultantsRepo.GetAll();
+            return this.consultantsRepo.GetAll().Where(c => c.IsDeleted == false);
         }
 
         public IEnumerable<Consultant> GetAll(string sort) {
@@ -62,6 +62,10 @@ namespace Slick.Services.People
         public Consultant GetById(Guid id)
         {
             return this.consultantsRepo.GetById(id);
+        }
+
+        public Consultant GetByIdWithDetails(Guid id) {
+            return this.consultantsRepo.GetById(id, c => c.Address);
         }
 
         public void Update(Consultant c)

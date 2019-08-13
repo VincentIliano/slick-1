@@ -38,42 +38,47 @@ namespace Slick.Api.Controllers
         // [controller]?sort=firstname&filter=firstname&value=kevin
         [HttpGet]
         public IActionResult Get([FromQuery]string sort, [FromQuery] string filter, [FromQuery] string value) {
-            if (!string.IsNullOrEmpty(filter)) {
+            IList<ConsultantDto> consultants = new List<ConsultantDto>();
+            IEnumerable<Consultant> consultantsFromDb = new List<Consultant>();
+            if (!string.IsNullOrEmpty(filter))
+            {
                 // voor de veiligheid hebben we besloten om niets terug te geven wanneer de value niet ingevuld is
                 if (string.IsNullOrEmpty(value)) return BadRequest("Parameterless searches have been disabled.");
 
-                IList<ConsultantDto> consultants = new List<ConsultantDto>();
-                IEnumerable<Consultant> consultantsFromDb = new List<Consultant>();
-
-                if (filter == "firstname")     consultantsFromDb = this.consultantsService.FindByFirstname(value, sort);
+                if (filter == "firstname") consultantsFromDb = this.consultantsService.FindByFirstname(value, sort);
                 else if (filter == "lastname") consultantsFromDb = this.consultantsService.FindByLastname(value, sort);
-
-                foreach (var c in consultantsFromDb) {
-                    consultants.Add(new ConsultantDto() {
-                        Firstname = c.Firstname,
-                        Lastname = c.Lastname,
-                        Email = c.Email,
-                        WorkEmail = c.WorkEmail,
-                        Telephone = c.Telephone,
-                        Street = c.Address.Street,
-                        Number = c.Address.Number,
-                        City = c.Address.City,
-                        Zip = c.Address.Zip
-                    });
-                }
-
-                return Ok(consultants);
             }
-            return Ok(this.consultantsService.GetAll(sort));
+            else {
+                consultantsFromDb = this.consultantsService.GetAll(sort);
+            }
+            foreach (var c in consultantsFromDb)
+            {
+                consultants.Add(new ConsultantDto()
+                {
+                    Id = c.Id,
+                    Url = "http://"+ Request.Host.Value + "/api/consultants/" + c.Id,
+                    Firstname = c.Firstname,
+                    Lastname = c.Lastname,
+                    Email = c.Email,
+                    WorkEmail = c.WorkEmail,
+                    Telephone = c.Telephone,
+                    Street = c.Address?.Street,
+                    Number = c.Address?.Number,
+                    City = c.Address?.City,
+                    Zip = c.Address?.Zip
+                });
+            }
+
+            return Ok(consultants);
         }
 
         // [controller]/id
         [HttpGet("{id}")]
         public IActionResult Get(Guid id) {
-            var c = consultantsService.GetById(id);
+            var c = consultantsService.GetByIdWithDetails(id);
             if (c == null) return NotFound();
 
-            var consultant = new ConsultantDto() {
+            var consultant = new ConsultantDetailsDto() {
                 Firstname = c.Firstname,
                 Lastname = c.Lastname,
                 Email = c.Email,

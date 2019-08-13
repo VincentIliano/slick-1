@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace Slick.Api.Dtos
 {
-    public class ConsultantDto
+    public class ConsultantDetailsDto
     {
         public Guid Id { get; set; }
-        public string Url { get; set; }
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         public string Street { get; set; }
@@ -22,5 +21,27 @@ namespace Slick.Api.Dtos
         public string WorkEmail { get; set; }
         public string Telephone { get; set; }
         public string Mobile { get; set; }
+        public IList<string> Specialisations { get; set; }
+        public IList<ContractDto> Contracts { get; set; }
+        public ContractDto CurrentContract
+        {
+            get
+            {
+                if (this.Contracts != null)
+                {
+                    var query = from c in this.Contracts
+                                orderby c?.StartDate descending
+                                select c;
+
+                    return query.FirstOrDefault();
+
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+        }
     }
 }

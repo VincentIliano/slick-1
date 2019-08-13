@@ -55,6 +55,20 @@ namespace Slick.Repositories
             return item;
         }
 
+        public T GetById(Guid id, params Expression<Func<T, object>>[] includeProperties)
+        {
+            //var item = GetAll().Where(s => s.Id == id).SingleOrDefault();
+
+            IQueryable<T> query = entitiesContext.Set<T>();
+            foreach (var includeProperty in includeProperties)
+            {
+                query = query.Include(includeProperty);
+            }
+
+
+            return query.Where(i => i.Id == id).SingleOrDefault();
+        }
+
         public void Update(T level)
         {
             EntityEntry dbEntity = entitiesContext.Entry<T>(level);

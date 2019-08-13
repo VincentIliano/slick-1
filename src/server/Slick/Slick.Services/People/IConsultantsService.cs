@@ -17,6 +17,8 @@ namespace Slick.Services.People
 
 
         Consultant GetById(Guid id);
+        Consultant GetByIdWithDetails(Guid id);
+
         void Update(Consultant c);
         void Delete(Consultant c);
         Consultant Create(Consultant c);
