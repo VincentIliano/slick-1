@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 using Slick.Models.Skills;
+using Slick.Repositories;
 using Slick.Repositories.Skills;
+using System.Linq;
 
 namespace Slick.Services.Skills
 {
     public class SpecialisationLevelService : ISpecialisationLevelService
     {
-        private readonly ISpecialisationLevelRepository repo;
+        private readonly IEntityRepository<SpecialisationLevel> repo;
 
-        public SpecialisationLevelService(ISpecialisationLevelRepository repo)
+        public SpecialisationLevelService(IEntityRepository<SpecialisationLevel> repo)
         {
             this.repo = repo;
         }
@@ -28,7 +30,7 @@ namespace Slick.Services.Skills
 
         public IEnumerable<SpecialisationLevel> GetAll()
         {
-            return repo.GetAll();
+            return repo.GetAll().Where(sl => sl.IsDeleted == false).ToList();
         }
 
         public SpecialisationLevel GetById(Guid id)
